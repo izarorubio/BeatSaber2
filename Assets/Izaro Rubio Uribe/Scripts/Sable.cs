@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class Sable : MonoBehaviour
 {
+    private Vector3 ultimaPosicion;
+    private Vector3 direccionCorte;
+
+    private void Update()
+    {
+        // Calcular dirección de movimiento del sable
+        direccionCorte = (transform.position - ultimaPosicion) / Time.deltaTime;
+        ultimaPosicion = transform.position;
+    }
     private void OnTriggerEnter(Collider other)
     {
         //Si el objeto con el que colisiona tiene tag "Cube"...
@@ -20,6 +29,24 @@ public class Sable : MonoBehaviour
             Destroy(other.gameObject);
             // Restar puntos en el marcador
             FindAnyObjectByType<Marcador>().RestarPuntos();
+        }
+        // Si colisiona con un cubo flecha
+        else if (other.CompareTag("CuboFlecha"))
+        {
+            ProyectilFlecha cuboFlecha = other.GetComponent<ProyectilFlecha>();
+            if (cuboFlecha != null)
+            {
+                if (cuboFlecha.ValidarCorte(direccionCorte))
+                {
+                    Destroy(other.gameObject);
+                    FindAnyObjectByType<Marcador>().SumarPuntos();
+                }
+                else
+                {
+                    Debug.Log("¡Corte incorrecto!");
+                    FindAnyObjectByType<Marcador>().RestarPuntos(); // Opcional
+                }
+            }
         }
     }
 }

@@ -6,6 +6,8 @@ public class ProyectilSpawner : MonoBehaviour
 {
     public GameObject proyectilPrefab;
     public GameObject bombaPrefab;
+    public GameObject[] proyectilesFlecha;
+
     public Transform jugadorTransform; // Transform del jugador (cámara)
     public float distancia = 10f; // Distancia fija desde el jugador
     // Tiempos entre instancias
@@ -29,14 +31,23 @@ public class ProyectilSpawner : MonoBehaviour
         // Que dependiendo de la escena haya bombas o no
         string nombreEscena = SceneManager.GetActiveScene().name;
 
-        if (nombreEscena == "BeatSaberAvanzado")
+        // Si estamos en "BeatSaberFlechas", solo se instancian cubos con flechas
+        if (nombreEscena == "BeatSaberFlechas")
         {
-            bombProbability = 0.35f;
+            // Hacer que solo se instancien proyectiles con flechas (sin cubos normales ni bombas)
+            bombProbability = 0f;
         }
-        else
+        // Si estamos en "BeatSaberAvanzado", podemos instanciar cubos normales y bombas
+        else if (nombreEscena == "BeatSaberAvanzado")
         {
-            bombProbability = 0f; // Sin bombas
+            bombProbability = 0.35f; // Ajusta la probabilidad de bomba según tu preferencia
         }
+        // Si estamos en "MiniBeatSaber", solo se instancian cubos normales
+        else if (nombreEscena == "MiniBeatSaber")
+        {
+            bombProbability = 0f;  // No queremos bombas ni cubos con flechas
+        }
+
     }
 
     IEnumerator SpawnCubes()
@@ -53,10 +64,26 @@ public class ProyectilSpawner : MonoBehaviour
             // Fijar altura en la generación del proyectil
             spawnPos.y = 1f;
 
-            // Elegir entre proyectil normal o bomba
-            GameObject prefabAInstanciar = (Random.value < bombProbability) ? bombaPrefab : proyectilPrefab;
+            // Lógica para elegir qué tipo de proyectil instanciar
+            GameObject prefabAInstanciar;
 
-            // Instanciar cubo/proyectil
+            // Determinamos qué proyectil lanzar dependiendo de la escena
+            if (bombProbability > 0f && Random.value < bombProbability)
+            {
+                prefabAInstanciar = bombaPrefab; // Instanciar bomba
+            }
+            else if (SceneManager.GetActiveScene().name == "BeatSaberFlechas" && proyectilesFlecha.Length > 0) // Solo si estamos en "BeatSaberFlechas"
+            {
+                int index = Random.Range(0, proyectilesFlecha.Length); // Seleccionar cubo con flecha
+                Debug.Log("Instanciando: " + proyectilesFlecha[index].name);
+                prefabAInstanciar = proyectilesFlecha[index];
+            }
+            else
+            {
+                prefabAInstanciar = proyectilPrefab; // Instanciar cubo normal
+            }
+
+            // Instanciar el proyectil
             GameObject cube = Instantiate(prefabAInstanciar, spawnPos, Quaternion.identity);
 
             // Dar dirección hacia el jugador con un ligero offset

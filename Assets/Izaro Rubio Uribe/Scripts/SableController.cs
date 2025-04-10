@@ -8,11 +8,6 @@ public class SaberController : MonoBehaviour
 
     private GameObject saberInstance; // Instancia del sable
 
-    void Start()
-    {
-        // Instanciar sable al inicio
-        saberInstance = Instantiate(sablePrefab, handTransform.position, Quaternion.identity);
-    }
 
     void Update()
     {
