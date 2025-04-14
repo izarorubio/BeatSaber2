@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Izaro Rubio Uribe/Scenes/BeatSaberAvanzado.unity
     guid: 5b80b5d05e1070e49adf2895b45f0ccf
+  - enabled: 1
+    path: Assets/Izaro Rubio Uribe/Scenes/BeatSaberFlechas.unity
+    guid: 3f3299d9f4b0100428614f4c7fbf259a
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d02944f3bcbe1314bbc58da55d98634d, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 5281c110cfce90f4ba803db3cdae1ca6, type: 2}
