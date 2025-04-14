@@ -44,7 +44,6 @@ public class Sable : MonoBehaviour
                 else
                 {
                     Debug.Log("¡Corte incorrecto!");
-                    FindAnyObjectByType<Marcador>().RestarPuntos(); // Opcional
                 }
             }
         }
