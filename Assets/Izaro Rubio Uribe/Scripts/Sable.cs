@@ -9,6 +9,7 @@ public class Sable : MonoBehaviour
     {
         // Calcular dirección de movimiento del sable
         direccionCorte = (transform.position - ultimaPosicion) / Time.deltaTime;
+        // Guardar la posición actual para usarla en el siguiente frame
         ultimaPosicion = transform.position;
     }
     private void OnTriggerEnter(Collider other)
@@ -33,17 +34,22 @@ public class Sable : MonoBehaviour
         // Si colisiona con un cubo flecha
         else if (other.CompareTag("CuboFlecha"))
         {
+            // Obtener el script del cubo con flecha
             ProyectilFlecha cuboFlecha = other.GetComponent<ProyectilFlecha>();
+            
+            // Asegurarse de que el cubo tiene el script
             if (cuboFlecha != null)
             {
+                // Si la dirección de corte es correcta...
                 if (cuboFlecha.ValidarCorte(direccionCorte))
                 {
-                    Destroy(other.gameObject);
-                    FindAnyObjectByType<Marcador>().SumarPuntos();
+                    Destroy(other.gameObject); //Destruir cubo
+                    FindAnyObjectByType<Marcador>().SumarPuntos(); //Sumar punto
                 }
                 else
                 {
-                    Debug.Log("¡Corte incorrecto!");
+                    Debug.Log("¡Corte incorrecto!"); // Debug para saber que el corte ha sido incorrecto
+
                 }
             }
         }

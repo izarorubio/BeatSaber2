@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Enumeración para las direcciones correctas de los cortes
 public enum DireccionCorte
 {
     Arriba,
@@ -11,14 +12,15 @@ public enum DireccionCorte
 }
 public class ProyectilFlecha : MonoBehaviour
 {
+    // Dirección que debe tener el corte para que sea válido (asignada en el prefab)
     public DireccionCorte direccionCorrecta;
 
-    // Llamado desde el sable con el vector de corte
-    public bool ValidarCorte(Vector3 direccionCorte)
+    public bool ValidarCorte(Vector3 direccionCorte) // (Llamadado desde el sable: true si el corte es válido, false si no)
     {
-        direccionCorte.Normalize();
+        direccionCorte.Normalize(); // Normalizar el vector para asegurar que tenga longitud 1
 
-        // Comparamos con la dirección esperada
+
+        // Comparamos con la dirección esperada (si el valor es cercano a 1 (0.7) se da por bueno)
         switch (direccionCorrecta)
         {
             case DireccionCorte.Arriba:

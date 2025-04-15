@@ -8,19 +8,19 @@ using InputDevice = UnityEngine.XR.InputDevice;
 
 public class MenuJuego : MonoBehaviour
 {
-    public GameObject menuUI;               // El panel del menú
-    public Transform cabezaJugador;         // La cámara o cabeza del jugador (XR Rig)
+    public GameObject menuUI;               // Panel del menú
+    public Transform cabezaJugador;         // (la cámara)
     public float distanciaMenu = 2f;        // Distancia del menú con respecto a la cabeza
-    private bool menuActivo = false;        // Controla si el menú está activo o no
+    private bool menuActivo = false;        // Bool para controlar si el menú está activo o no
 
     void Start()
     {
-        menuUI.SetActive(false);             // Desactivar menú al inicio
+        menuUI.SetActive(false);             // Menú desactivado al principio
     }
 
     void Update()
     {
-        // Simulación del botón de menú con la tecla 'M' en el editor
+        // Simulación del botón de menú con la tecla 'M' (para probarlo en el portátil)
         if (Keyboard.current.mKey.wasPressedThisFrame)
         {
             ToggleMenu();
@@ -48,7 +48,7 @@ public class MenuJuego : MonoBehaviour
 
             // Hacer que el menú mire hacia la cámara (jugador)
             menuUI.transform.LookAt(cabezaJugador.position);
-            // Asegurarse de que el menú no esté mirando al revés (voltearlo)
+            // Asegura que el menú no esté mirando al revés (voltearlo)
             menuUI.transform.forward = -menuUI.transform.forward;
         }
     }

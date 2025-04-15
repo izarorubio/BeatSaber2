@@ -25,7 +25,7 @@ public class SeleccionadorNiveles : MonoBehaviour
     private void CambiarEscenaNivel(SelectEnterEventArgs args)
     {
         // Guardamos las opciones seleccionadas en el menú
-        FindObjectOfType<MenuOpciones>()?.GuardarOpciones();
+        //FindObjectOfType<MenuOpciones>()?.GuardarOpciones();
 
         // Cargar la escena del nivel elegido
         SceneManager.LoadScene(escenaNivelElegido);

@@ -4,7 +4,8 @@ using TMPro;
 
 public class MenuOpciones : MonoBehaviour
 {
-    public TMP_Dropdown puntosDropdown; // Dropdown para elegir puntos objetivo
+    //public TMP_Dropdown puntosDropdown; // Dropdown para elegir puntos objetivo
+    public Dropdown m_Dropdown; // Dropdown para elegir puntos objetivo
     public Toggle dobleSableToggle; // Toggle para activar/desactivar el sable doble
 
 
@@ -19,6 +20,8 @@ public class MenuOpciones : MonoBehaviour
 
         // Registrar evento cuando el jugador cambie el toggle
         dobleSableToggle.onValueChanged.AddListener(OnToggleChanged);
+
+        PlayerPrefs.SetInt("puntObj", 10);
     }
 
     // Para guardar la preferencia del toggle en PlayerPrefs
@@ -29,9 +32,20 @@ public class MenuOpciones : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void changePuntuacionMax()
+    {
+        Debug.Log(m_Dropdown.value);
+        if (m_Dropdown.value == 1)
+            PlayerPrefs.SetInt("puntObj", 20);
+        else if (m_Dropdown.value == 2)
+            PlayerPrefs.SetInt("puntObj", 30);
+        else
+            PlayerPrefs.SetInt("puntObj", 10);
+    }
+
     // Para guardar los puntos objetivo seleccionados en el objeto singleton
-    public void GuardarOpciones()
+   /* public void GuardarOpciones()
     {
         OpcionesJugador.instancia.puntosObjetivo = int.Parse(puntosDropdown.options[puntosDropdown.value].text);
-    }
+    }*/
 }
