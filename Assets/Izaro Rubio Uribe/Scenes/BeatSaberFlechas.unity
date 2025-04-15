@@ -122,53 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &296618289
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 296618291}
-  - component: {fileID: 296618290}
-  m_Layer: 0
-  m_Name: SableController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &296618290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296618289}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dea9f206d5036143a42a2d0ef4939a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handTransform: {fileID: 912140386}
-  sableLength: 1
-  sablePrefab: {fileID: 1798096253}
---- !u!4 &296618291
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296618289}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.48644, z: 0.62}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &381336487
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,11 +437,6 @@ Transform:
 --- !u!4 &912140385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9014170785475729501, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
-  m_PrefabInstance: {fileID: 912140383}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &912140386 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8424601471627627450, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
   m_PrefabInstance: {fileID: 912140383}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &912140387 stripped
@@ -921,11 +869,6 @@ PrefabInstance:
 --- !u!4 &1798096252 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1840307470650554094, guid: e2b01e1f00573a04bb6f0ce245415c6a, type: 3}
-  m_PrefabInstance: {fileID: 1798096251}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1798096253 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 270992376397718845, guid: e2b01e1f00573a04bb6f0ce245415c6a, type: 3}
   m_PrefabInstance: {fileID: 1798096251}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1872707076 stripped
@@ -1387,7 +1330,6 @@ SceneRoots:
   - {fileID: 883823467}
   - {fileID: 1289276240}
   - {fileID: 953119712}
-  - {fileID: 296618291}
   - {fileID: 1917546620}
   - {fileID: 912140383}
   - {fileID: 2550450621156205307}

@@ -15,12 +15,6 @@ public class Marcador : MonoBehaviour
         // Buscar spawner en la escena
         spawner = FindObjectOfType<ProyectilSpawner>();
 
-        /*// Si hay opciones guardadas, usarlas
-        if (OpcionesJugador.instancia != null)
-        {
-            totalPuntos = OpcionesJugador.instancia.puntosObjetivo;
-        }*/
-
         totalPuntos = PlayerPrefs.GetInt("puntObj");
         puntosText.text = puntos.ToString();
     }

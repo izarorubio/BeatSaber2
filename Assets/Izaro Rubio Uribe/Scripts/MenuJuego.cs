@@ -26,7 +26,7 @@ public class MenuJuego : MonoBehaviour
             ToggleMenu();
         }
 
-        // Detectar el botón de menú del mando izquierdo (si estamos en VR)
+        // Detectar el botón de menú del mando izquierdo (para VR)
         InputDevice leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
         bool botonMenuPresionado = false;
 
